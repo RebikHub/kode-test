@@ -42,4 +42,8 @@ export default createGlobalStyle`
     width: 1280px;
     margin: auto;
   }
+
+  ul > li {
+    list-style: none;
+  }
 `
