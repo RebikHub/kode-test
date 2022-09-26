@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
-export default function ListPeople() {
+export default function ListPeople(): ReactElement {
   return (
     <div>ListPeople</div>
   )

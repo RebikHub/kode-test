@@ -12,26 +12,30 @@ export default createGlobalStyle`
 
   @font-face {
     font-family: 'Inter-bold';
-    src: url(${InterBold}) format('ttf');
+    src: url(${InterBold});
     font-weight: 700;
+    font-style: normal;
   }
 
   @font-face {
-    font-family: 'Inter-bold';
-    src: url(${InterSemiBold}) format('ttf');
+    font-family: 'Inter-semibold';
+    src: url(${InterSemiBold});
     font-weight: 600;
+    font-style: normal;
   }
 
   @font-face {
-    font-family: 'Inter-bold';
-    src: url(${InterMedium}) format('ttf');
+    font-family: 'Inter-medium';
+    src: url(${InterMedium});
     font-weight: 500;
+    font-style: normal;
   }
 
   @font-face {
-    font-family: 'Inter-bold';
-    src: url(${InterRegular}) format('ttf');
+    font-family: 'Inter-regular';
+    src: url(${InterRegular});
     font-weight: 400;
+    font-style: normal;
   }
 
   #root {
