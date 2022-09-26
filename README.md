@@ -1,4 +1,4 @@
-# kode-test
+# KODE-test
 
 ## План задач
 
