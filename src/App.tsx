@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactElement } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Head from './components/Head';
+import Header from './components/Header';
 import ListPeople from './components/ListPeople';
 import Profile from './components/Profile';
 
@@ -10,7 +10,7 @@ export default function App(): ReactElement {
     <Routes>
       <Route path='/' element={
         <>
-          <Head/>
+          <Header/>
           <ListPeople/>
         </>
       }/>
