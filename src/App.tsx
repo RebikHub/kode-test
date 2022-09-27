@@ -9,7 +9,6 @@ import SortList from './components/SortList';
 
 export default function App(): ReactElement {
   const {modal} = useAppSelector((state) => state.sliceModalSort);
-  console.log(modal);
   
 
   return (

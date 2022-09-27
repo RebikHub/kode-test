@@ -86,6 +86,7 @@ export const ItemBar = styled.li<{click: boolean}>`
   border-bottom: ${(props) => props.click ? '2px solid #6534FF' : 'none'};
 `
 
+// SortList
 
 export const Modal = styled.div`
   position: absolute;
@@ -169,4 +170,95 @@ export const SortText = styled.p`
 
 export const SortBirthday = styled.div`
   display: flex;
+`
+
+// ListPeople
+
+export const ListDiv = styled.div`
+  padding-top: 22px;
+`
+
+// ItemPeople
+
+export const ItemListDiv = styled.div`
+  display: flex;
+  margin-bottom: 24px;
+  margin-left: 16px;
+`
+export const ItemImage = styled.div`
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  border-radius: 50px;
+  margin-right: 16px;
+
+  & > img {
+
+  }
+`
+export const ItemInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+export const ItemName = styled.p`
+  width: 144px;
+  height: 16px;
+  background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  border-radius: 50px;
+
+ & > span {
+
+ }
+`
+
+export const ItemNameTag = styled.span``
+
+export const ItemDepartment = styled.p`
+  width: 80px;
+  height: 12px;
+  margin-top: 6px;
+  background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  border-radius: 50px;
+`
+// ErrorPeople
+
+export const ErrorPeopleDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 343px;
+  height: 150px;
+  margin: 133px auto;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const ErrorPeopleImage = styled.span`
+  display: flex;
+  width: 56px;
+  height: 56px;
+  background-image: url(${require('../image/error-people.png')})
+`
+
+export const ErrorPeopleTitle = styled.p`
+  font-family: 'Inter-semibold';
+  font-size: 17px;
+  line-height: 22px;
+  color: #050510;
+`
+
+export const ErrorPeopleText = styled.p`
+  font-family: 'Inter-regular';
+  font-size: 16px;
+  line-height: 20px;
+  color: #97979B;
+`
+
+export const ErrorPeopleTry = styled.p`
+  font-family: 'Inter-semibold';
+  font-size: 16px;
+  line-height: 20px;
+  color: #6534FF;
+  cursor: pointer;
 `
