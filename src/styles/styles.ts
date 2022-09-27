@@ -85,3 +85,88 @@ export const ItemBar = styled.li<{click: boolean}>`
   cursor: pointer;
   border-bottom: ${(props) => props.click ? '2px solid #6534FF' : 'none'};
 `
+
+
+export const Modal = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(5, 5, 16, 0.16);
+  top: 0;
+  left: 0;
+  right: 1;
+  bottom: 1;
+`
+
+export const Sort = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 8px;
+  width: 373px;
+  height: 192px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  z-index: 1;
+`
+
+export const SortHeader = styled.div`
+  position: relative;
+  height: 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 36px;
+`
+
+export const SortTitle = styled.h5`
+  font-family: 'Inter-semibold';
+  font-size: 20px;
+  line-height: 24px;
+  color: #050510;
+`
+
+export const SortClose = styled.span`
+  display: flex;
+  position: absolute;
+  left: 326px;
+  width: 24px;
+  height: 24px;
+  background-color: #F7F7F8;
+  border-radius: 12px;
+  background-image: url(${require('../image/close-sort.png')});
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+`
+
+export const SortBody = styled.div`
+  margin-left: 18px;
+`
+
+export const SortAlphabet = styled.div`
+  display: flex;
+  margin-bottom: 40px;
+`
+
+export const SortCheck = styled.span<{check: boolean}>`
+  display: flex;
+  box-sizing: border-box;
+  margin-right: 14px;
+  width: 20px;
+  height: 20px;
+  border: ${(props) => props.check ? '7px' : '3px'} solid #6534FF;
+  border-radius: 50%;
+`
+
+export const SortText = styled.p`
+  font-family: 'Inter-medium';
+  font-size: 16px;
+  line-height: 20px;
+  color: #050510;
+  align-self: center;
+`
+
+export const SortBirthday = styled.div`
+  display: flex;
+`
