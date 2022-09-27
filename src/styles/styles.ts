@@ -1,17 +1,5 @@
 import styled from 'styled-components';
 
-type liStyleTypes = {
-  font: string,
-  color: string,
-  border: string
-}
-
-const liStyle: liStyleTypes = {
-  font: 'Inter-semibold',
-  color: '#050510',
-  border: '2px solid #6534FF'
-}
-
 export const HeaderDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -88,12 +76,12 @@ export const NavBar = styled.ul`
 
 export const ItemBar = styled.li<{click: boolean}>`
   display: flex;
-  font-family: ${(props) => props.click ? liStyle.font : 'Inter-medium'};
+  font-family: ${(props) => props.click ? 'Inter-semibold' : 'Inter-medium'};
   font-size: 15px;
   line-height: 20px;
   text-align: center;
-  color: ${(props) => props.click ? liStyle.color : '#97979B'};
+  color: ${(props) => props.click ? '#050510' : '#97979B'};
   padding: 8px 12px;
   cursor: pointer;
-  border-bottom: ${(props) => props.click ? liStyle.border : 'none'};
+  border-bottom: ${(props) => props.click ? '2px solid #6534FF' : 'none'};
 `
