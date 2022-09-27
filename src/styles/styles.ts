@@ -6,7 +6,7 @@ export const HeaderDiv = styled.div`
   align-items: flex-start;
   padding: 0px;
 `
-export const HeaderTitle = styled.h4`
+export const HeaderTitle = styled.h4<{net: boolean}>`
   width: 76px;
   height: 28px;
   margin-top: 16px;
@@ -16,11 +16,25 @@ export const HeaderTitle = styled.h4`
   font-style: normal;
   font-size: 24px;
   line-height: 28px;
-  color: #050510;
+  color: ${(props) => props.net ? '#050510' : '#FFFFFF'};
 `
+export const Offline = styled.div`
+  width: 100%;
+  height: 108px;
+  background-color: #F44336;
+  & > p {
+    margin-left: 24px;
+    margin-top: 20px;
+    font-family: 'Inter-medium';
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+  }
+`
+
 export const InputDiv = styled.div`
   display: flex;
-  width: 95.625%;
+  width: 97.5%;
   margin: 6px auto;
   background: #F7F7F8;
   border-radius: 16px;
