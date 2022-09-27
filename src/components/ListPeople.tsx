@@ -4,7 +4,7 @@ import ErrorPeople from './ErrorPeople';
 import ItemPeople from './ItemPeople';
 
 type List = Array<number>;
-const error = true
+const error = false
 
 export default function ListPeople(): ReactElement {
   const [list, setList] = useState<List>([1,2,3,4,5,6]);

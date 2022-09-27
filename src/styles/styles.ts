@@ -20,9 +20,8 @@ export const HeaderTitle = styled.h4`
 `
 export const InputDiv = styled.div`
   display: flex;
-  width: 1224px;
+  width: 95.625%;
   margin: 6px auto;
-  padding: 8px 12px;
   background: #F7F7F8;
   border-radius: 16px;
 `
@@ -31,6 +30,7 @@ export const Input = styled.input`
   height: 24px;
   border: none;
   background-color: transparent;
+  margin: auto 0px;
 
   &:focus {
     outline: none;
@@ -50,38 +50,39 @@ export const Input = styled.input`
 `
 export const SearchDiv = styled.div`
   width: 21px;
-  height: 21px; 
-  margin-right: 10px;
+  height: 21px;
+  margin: 8px 10px 8px 12px;
   cursor: pointer;
 `
 export const SortDiv = styled.div`
   width: 21px;
   height: 12px; 
-  margin: 6px 4px;
+  margin: 14px;
   cursor: pointer;
 `
 
 export const TopBar = styled.div`
   width: 100%;
-  height: 36px;
-  margin-top: 14px;
+  height: 2.25rem;
+  margin-top: 0.875rem;
   padding-bottom: 2px;
   border-bottom: 0.33px solid #C3C3C6;
 `
 
 export const NavBar = styled.ul`
   display: flex;
+  width: 100%;
   margin-left: 16px;
 `
 
 export const ItemBar = styled.li<{click: boolean}>`
   display: flex;
   font-family: ${(props) => props.click ? 'Inter-semibold' : 'Inter-medium'};
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
   text-align: center;
   color: ${(props) => props.click ? '#050510' : '#97979B'};
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
   border-bottom: ${(props) => props.click ? '2px solid #6534FF' : 'none'};
 `

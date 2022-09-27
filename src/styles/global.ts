@@ -10,6 +10,18 @@ export default createGlobalStyle`
     padding: 0;
   }
 
+  @media (max-width: 480px) {
+    * {
+      font-size: 12px;
+    }
+  }
+
+  @media (min-width: 481px) {
+    * {
+      font-size: 16px;
+    }
+  }
+
   @font-face {
     font-family: 'Inter-bold';
     src: url(${InterBold});
@@ -39,7 +51,7 @@ export default createGlobalStyle`
   }
 
   #root {
-    width: 1280px;
+    max-width: 1280px;
     margin: auto;
   }
 
