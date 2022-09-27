@@ -1,21 +1,21 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { getUsersList } from '../store/sliceGetUsers';
+import { IUser } from '../interfaces/interfaces';
+import { useAppSelector } from '../store/hooks';
 import { ListDiv } from '../styles/styles';
 import ErrorPeople from './ErrorPeople';
 import ItemPeople from './ItemPeople';
 
-type List = Array<number>;
-const error = false
+type List = Array<IUser>;
 
 export default function ListPeople(): ReactElement {
-  const dispatch = useAppDispatch();
-  const data = useAppSelector((state) => state.sliceGetUsers.list);
-  const [list, setList] = useState<List>([1,2,3,4,5,6]);
+  const {list, error} = useAppSelector((state) => state.sliceGetUsers);
+  const [listItems, setListItems] = useState<List>([]);
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    if (list) {
+      setListItems(list);
+    };
+  }, [list]);
 
   if (error) {
     return <ErrorPeople/>;
@@ -23,7 +23,8 @@ export default function ListPeople(): ReactElement {
 
   return (
     <ListDiv>
-      {list.map((e) => <ItemPeople item={e} key={e}/>)}
+      {list ? listItems.map((e) => <ItemPeople item={e} key={e.id + e.phone}/>) :
+        [1,2,3,4,5,6].map((e) => <ItemPeople item={null} key={e} />)}
     </ListDiv>
   )
 };

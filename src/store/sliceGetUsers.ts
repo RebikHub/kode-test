@@ -38,13 +38,13 @@ export const {
 export const getUsersList = (department: string) => {
   return async (dispatch: AppDispatch) => {
     dispatch(getUsersRequest());
+    console.log(department);
+    
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}?__example=${department}`);
       console.log(response);
-      dispatch(getUsersSuccess(response.data));
+      dispatch(getUsersSuccess(response.data.items));
     } catch (e: any) {
-      console.log(e.message);
-      
       dispatch(getUsersError(e.message));
     };
   };
