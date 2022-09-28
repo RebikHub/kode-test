@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IGetUsers, IUser } from "../interfaces/interfaces";
+import { compareDate } from "../utils/utils";
 import { AppDispatch } from "./store";
 
 const initialState: IGetUsers = {
@@ -48,7 +49,7 @@ export const sliceGetUsers = createSlice({
     sortBirthday: (state) => {
       if (state.list) {
         state.list.map((e) => e.birthdayShort = new Date(e.birthday).toLocaleDateString('ru', { month: 'short', day: 'numeric' }));
-        const sortArray = state.list.sort((a, b) => new Date(b.birthday).getTime() - new Date(a.birthday).getTime());
+        const sortArray = state.list.sort((a, b) => compareDate(b.birthday)- compareDate(a.birthday));
         console.log(sortArray);
         
         state.list = [...sortArray];

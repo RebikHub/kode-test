@@ -173,6 +173,7 @@ export const SortCheck = styled.span<{check: boolean}>`
   height: 20px;
   border: ${(props) => props.check ? '7px' : '3px'} solid #6534FF;
   border-radius: 50%;
+  cursor: pointer;
 `
 
 export const SortText = styled.p`
@@ -253,6 +254,16 @@ export const ItemDepartmentLoading = styled.p`
   background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
   border-radius: 50px;
   margin-top: 6px;
+`
+
+export const SortDay = styled.div`
+  align-self: center;
+  margin-left: auto;
+  font-family: 'Inter-regular';
+  font-size: 15px;
+  line-height: 20px;
+  text-align: right;
+  color: #55555C;
 `
 
 // ErrorPeople
