@@ -11,7 +11,7 @@ const initialState: IGetUsers = {
   sorting: false,
   sortingDate: false,
   searchedList: [],
-  searching: false
+  searching: false,
 };
 
 export const sliceGetUsers = createSlice({
@@ -55,6 +55,12 @@ export const sliceGetUsers = createSlice({
       if (state.list) {
         state.list.map((e) => e.birthdayShort = new Date(e.birthday).toLocaleDateString('ru', { month: 'short', day: 'numeric' }).replace(/\.$/, ''));
         const sortArray = state.list.sort((a, b) => compareDate(b.birthday)- compareDate(a.birthday));
+        sortArray.find((e) => {
+          if (e.birthdayShort.includes('ян')) {
+            return e.yearLine = true;
+          };
+          return e;
+        })
         state.list = [...sortArray];
         state.sorting = true;
         state.sortingDate = true;
@@ -101,16 +107,5 @@ export const getUsersList = (department: string) => {
     };
   };
 };
-
-// __code=
-// string
-
-// __dynamic=
-// boolean
-// Тип моковых данных.
-
-// __example=
-// string
-// Параметр фильтрации пользователей по полю "department"
 
 export default sliceGetUsers.reducer;

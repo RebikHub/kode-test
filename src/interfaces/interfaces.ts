@@ -14,6 +14,7 @@ export interface IUser {
   position: string;
   userTag: string;
   birthdayShort: string;
+  yearLine: boolean | null;
 };
 
 export interface IGetUsers extends IStatus {

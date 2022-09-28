@@ -307,3 +307,27 @@ export const ErrorPeopleTry = styled.p`
   cursor: pointer;
   margin-top: 12px;
 `
+
+export const LineDiv = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 25px 0;
+
+  & > div {
+    width: 43.59%;
+    align-self: center;
+    height: 0px;
+    border-top: 1px solid #C3C3C6;
+  }
+
+  & > p {
+    width: 160px;
+    height: 20px;
+    text-align: center;
+    font-family: 'Inter-medium';
+    font-size: 15px;
+    line-height: 20px;
+    color: #C3C3C6;
+  }
+`
