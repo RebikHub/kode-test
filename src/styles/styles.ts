@@ -66,7 +66,6 @@ export const SearchDiv = styled.div`
   width: 21px;
   height: 21px;
   margin: 8px 10px 8px 12px;
-  cursor: pointer;
 `
 export const SortDiv = styled.div`
   width: 21px;

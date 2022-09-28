@@ -8,7 +8,7 @@ import ItemPeople from './ItemPeople';
 type List = Array<IUser>;
 
 export default function ListPeople(): ReactElement {
-  const {list, error} = useAppSelector((state) => state.sliceGetUsers);
+  const {list, error, searchedList} = useAppSelector((state) => state.sliceGetUsers);
   const [listItems, setListItems] = useState<List>([]);
 
   useEffect(() => {
@@ -16,6 +16,12 @@ export default function ListPeople(): ReactElement {
       setListItems(list);
     };
   }, [list]);
+
+  useEffect(() => {
+    if (searchedList) {
+      setListItems(searchedList);
+    };
+  }, [searchedList]);
 
   if (error) {
     return <ErrorPeople/>;
