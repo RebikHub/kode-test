@@ -1,14 +1,14 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { IUser } from '../interfaces/interfaces';
 import { useAppSelector } from '../store/hooks';
-import { ListDiv } from '../styles/styles';
+import { ErrorPeopleDiv, ErrorPeopleImage, ErrorPeopleText, ErrorPeopleTitle, ListDiv } from '../styles/styles';
 import ErrorPeople from './ErrorPeople';
 import ItemPeople from './ItemPeople';
 
 type List = Array<IUser>;
 
 export default function ListPeople(): ReactElement {
-  const {list, error, searchedList} = useAppSelector((state) => state.sliceGetUsers);
+  const {list, error, searchedList, searching} = useAppSelector((state) => state.sliceGetUsers);
   const [listItems, setListItems] = useState<List>([]);
 
   useEffect(() => {
@@ -25,6 +25,16 @@ export default function ListPeople(): ReactElement {
 
   if (error) {
     return <ErrorPeople/>;
+  };
+
+  if (searching) {
+    return (
+      <ErrorPeopleDiv>
+        <ErrorPeopleImage search={searching}/>
+        <ErrorPeopleTitle>Мы никого не нашли</ErrorPeopleTitle>
+        <ErrorPeopleText>Попробуй скорректировать запрос</ErrorPeopleText>
+      </ErrorPeopleDiv>
+    )
   };
 
   return (

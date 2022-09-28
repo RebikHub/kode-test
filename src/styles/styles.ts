@@ -271,17 +271,16 @@ export const ErrorPeopleDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 343px;
-  height: 150px;
   margin: 133px auto;
   justify-content: space-between;
   align-items: center;
 `
 
-export const ErrorPeopleImage = styled.span`
+export const ErrorPeopleImage = styled.span<{search: boolean | null}>`
   display: flex;
   width: 56px;
   height: 56px;
-  background-image: url(${require('../image/error-people.png')})
+  background-image: url(${(props) => props.search ? require('../image/search-error.png') : require('../image/error-people.png')})
 `
 
 export const ErrorPeopleTitle = styled.p`
@@ -289,6 +288,7 @@ export const ErrorPeopleTitle = styled.p`
   font-size: 17px;
   line-height: 22px;
   color: #050510;
+  margin-top: 12px;
 `
 
 export const ErrorPeopleText = styled.p`
@@ -296,6 +296,7 @@ export const ErrorPeopleText = styled.p`
   font-size: 16px;
   line-height: 20px;
   color: #97979B;
+  margin-top: 12px;
 `
 
 export const ErrorPeopleTry = styled.p`
@@ -304,4 +305,5 @@ export const ErrorPeopleTry = styled.p`
   line-height: 20px;
   color: #6534FF;
   cursor: pointer;
+  margin-top: 12px;
 `

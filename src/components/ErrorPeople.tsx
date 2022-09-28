@@ -8,7 +8,7 @@ export default function ErrorPeople(): ReactElement {
   const dispatch = useAppDispatch();
   return (
     <ErrorPeopleDiv>
-      <ErrorPeopleImage/>
+      <ErrorPeopleImage search={null}/>
       <ErrorPeopleTitle>Какой-то сверхразум все сломал</ErrorPeopleTitle>
       <ErrorPeopleText>Постараемся быстро починить</ErrorPeopleText>
       <ErrorPeopleTry onClick={() => dispatch(getUsersList(department))}>Попробовать снова</ErrorPeopleTry>

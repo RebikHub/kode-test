@@ -21,4 +21,5 @@ export interface IGetUsers extends IStatus {
   sorting: boolean;
   sortingDate: boolean;
   searchedList: Array<IUser> | null;
+  searching: boolean;
 };

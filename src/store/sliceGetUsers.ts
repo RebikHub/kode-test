@@ -10,7 +10,8 @@ const initialState: IGetUsers = {
   list: [],
   sorting: false,
   sortingDate: false,
-  searchedList: []
+  searchedList: [],
+  searching: false
 };
 
 export const sliceGetUsers = createSlice({
@@ -24,6 +25,7 @@ export const sliceGetUsers = createSlice({
       state.searchedList = null;
       state.sortingDate = false;
       state.sorting = false;
+      state.searching = false;
     },
     getUsersSuccess: (state, actions: PayloadAction<IUser[]>) => {
       state.loading = false;
@@ -59,9 +61,20 @@ export const sliceGetUsers = createSlice({
       };
     },
     searchUser: (state, actions: PayloadAction<string>) => {
+      state.searching = false;
+      state.searchedList = null;
+
+      if (actions.payload.trim() === '') {
+        state.searching = false;
+        state.searchedList = null;
+      };
+      
       if (state.list) {
         const searchArray = [...state.list]
         state.searchedList = searchArray.filter((e) => compareSearch(e.firstName, e.lastName, e.userTag, actions.payload));
+        if (state.searchedList.length === 0) {
+          state.searching = true;
+        }
       };
     }
   }
