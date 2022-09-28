@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function ItemPeople({item}: Props): ReactElement {
-  const { loading } = useAppSelector((state) => state.sliceGetUsers);
+  const { loading, sortingDate } = useAppSelector((state) => state.sliceGetUsers);
   
   if (loading) {
     return (
@@ -31,6 +31,15 @@ export default function ItemPeople({item}: Props): ReactElement {
         <ItemName>{item?.firstName} {item?.lastName} <span>{item?.userTag}</span></ItemName>
         <ItemDepartment>{item?.department}</ItemDepartment>
       </ItemInfo>
+      {sortingDate ? <div style={{
+        alignSelf: 'center',
+        marginLeft: 'auto',
+        fontFamily: 'Inter-regular',
+        fontSize: '15px',
+        lineHeight: '20px',
+        textAlign: 'right',
+        color: '#55555C'
+      }}>{item?.birthday}</div> : null}
     </ItemListDiv>
   )
 }

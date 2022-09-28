@@ -13,8 +13,11 @@ export interface IUser {
   phone: string;
   position: string;
   userTag: string;
+  birthdayShort: string;
 };
 
 export interface IGetUsers extends IStatus {
   list: Array<IUser> | null;
+  sorting: boolean;
+  sortingDate: boolean;
 };

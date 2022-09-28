@@ -6,7 +6,9 @@ import { AppDispatch } from "./store";
 const initialState: IGetUsers = {
   loading: false,
   error: null,
-  list: []
+  list: [],
+  sorting: false,
+  sortingDate: false,
 };
 
 export const sliceGetUsers = createSlice({
@@ -16,15 +18,43 @@ export const sliceGetUsers = createSlice({
     getUsersRequest: (state) => {
       state.loading = true;
       state.error = null;
+      state.list = null;
     },
     getUsersSuccess: (state, actions: PayloadAction<IUser[]>) => {
       state.loading = false;
       state.error = null;
       state.list = actions.payload;
+      state.sorting = false;
     },
     getUsersError: (state, actions: PayloadAction<string>) => {
       state.loading = false;
       state.error = actions.payload;
+    },
+    sortAlphabet: (state) => {
+      if (state.list) {
+        const sortArray = state.list.sort((a, b) => {
+          if ( a.firstName < b.firstName ){
+            return -1;
+          };
+          if ( a.firstName > b.firstName ){
+            return 1;
+          };
+          return 0;
+        });
+        state.list = [...sortArray];
+        state.sorting = true;
+      };
+    },
+    sortBirthday: (state) => {
+      if (state.list) {
+        state.list.map((e) => e.birthdayShort = new Date(e.birthday).toLocaleDateString('ru', { month: 'short', day: 'numeric' }));
+        const sortArray = state.list.sort((a, b) => new Date(b.birthday).getTime() - new Date(a.birthday).getTime());
+        console.log(sortArray);
+        
+        state.list = [...sortArray];
+        state.sorting = true;
+        state.sortingDate = true;
+      };
     }
   }
 });
@@ -32,7 +62,9 @@ export const sliceGetUsers = createSlice({
 export const {
   getUsersRequest,
   getUsersSuccess,
-  getUsersError
+  getUsersError,
+  sortAlphabet,
+  sortBirthday
 } = sliceGetUsers.actions;
 
 export const getUsersList = (department: string) => {

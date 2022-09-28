@@ -1,7 +1,8 @@
-import React, { ReactElement, useState } from 'react'
-import { useAppDispatch } from '../store/hooks'
+import React, { ReactElement, useState } from 'react';
+import { useAppDispatch } from '../store/hooks';
+import { sortAlphabet, sortBirthday } from '../store/sliceGetUsers';
 import { closeSort } from '../store/sliceModalSort';
-import { Modal, Sort, SortAlphabet, SortBirthday, SortBody, SortCheck, SortClose, SortHeader, SortText, SortTitle } from '../styles/styles'
+import { Modal, Sort, SortAlphabet, SortBirthday, SortBody, SortCheck, SortClose, SortHeader, SortText, SortTitle } from '../styles/styles';
 
 type Check = {
   alphabet: boolean,
@@ -13,7 +14,25 @@ export default function SortList(): ReactElement {
   const [check, setCheck] = useState<Check>({
     alphabet: false,
     birthday: false
-  })
+  });
+
+  function sortToAlphabet() {
+    setCheck({
+      alphabet: !check.alphabet,
+      birthday: false
+    });
+    dispatch(sortAlphabet());
+    dispatch(closeSort());
+  };
+
+  function sortToBirthday() {
+    setCheck({
+      alphabet: false,
+      birthday: !check.birthday
+    });
+    dispatch(sortBirthday());
+    dispatch(closeSort());
+  };
 
   return (
     <Modal>
@@ -26,19 +45,13 @@ export default function SortList(): ReactElement {
           <SortAlphabet>
             <SortCheck
               check={check.alphabet}
-              onClick={() => setCheck({
-                alphabet: !check.alphabet,
-                birthday: false
-                })}/>
+              onClick={sortToAlphabet}/>
             <SortText>По алфавиту</SortText>
           </SortAlphabet>
           <SortBirthday>
           <SortCheck
               check={check.birthday}
-              onClick={() => setCheck({
-                alphabet: false,
-                birthday: !check.birthday
-                })}/>
+              onClick={sortToBirthday}/>
             <SortText>По дню рождения</SortText>
           </SortBirthday>
         </SortBody>
