@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { IUser } from '../interfaces/interfaces';
 import { useAppSelector } from '../store/hooks';
-import { ItemDepartment, ItemImage, ItemInfo, ItemListDiv, ItemName } from '../styles/styles';
+import { ItemDepartment, ItemDepartmentLoading, ItemImage, ItemInfo, ItemListDiv, ItemName, ItemNameLoading } from '../styles/styles';
 
 type Props = {
   item: null | IUser
@@ -15,8 +15,8 @@ export default function ItemPeople({item}: Props): ReactElement {
       <ItemListDiv>
         <ItemImage/>
         <ItemInfo>
-          <ItemName/>
-          <ItemDepartment/>
+          <ItemNameLoading/>
+          <ItemDepartmentLoading/>
         </ItemInfo>
       </ItemListDiv> 
     )

@@ -18,10 +18,10 @@ export const HeaderTitle = styled.h4<{net: boolean}>`
   line-height: 28px;
   color: ${(props) => props.net ? '#050510' : '#FFFFFF'};
 `
-export const Offline = styled.div`
+export const Notice = styled.div<{load: boolean}>`
   width: 100%;
   height: 108px;
-  background-color: #F44336;
+  background-color: ${(props) => props.load ? '#6534FF' : '#F44336'};
   & > p {
     margin-left: 24px;
     margin-top: 20px;
@@ -199,6 +199,7 @@ export const ItemListDiv = styled.div`
   display: flex;
   margin-bottom: 24px;
   margin-left: 16px;
+  cursor: pointer;
 `
 export const ItemImage = styled.div`
   width: 72px;
@@ -208,7 +209,8 @@ export const ItemImage = styled.div`
   margin-right: 16px;
 
   & > img {
-
+    width: 100%;
+    border-radius: 50%;
   }
 `
 export const ItemInfo = styled.div`
@@ -218,25 +220,41 @@ export const ItemInfo = styled.div`
 `
 
 export const ItemName = styled.p`
+  font-family: 'Inter-medium';
+  font-size: 16px;
+  line-height: 20px;
+  color: #050510;
+
+ & > span {
+  font-family: 'Inter-medium';
+  font-size: 14px;
+  line-height: 18px;
+  color: #97979B;
+ }
+`
+
+export const ItemDepartment = styled.p`
+  margin-top: 6px;
+  font-family: 'Inter-regular';
+  font-size: 13px;
+  line-height: 16px;
+  color: #55555C;
+`
+
+export const ItemNameLoading = styled.p`
   width: 144px;
   height: 16px;
   background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
   border-radius: 50px;
-
- & > span {
-
- }
 `
-
-export const ItemNameTag = styled.span``
-
-export const ItemDepartment = styled.p`
+export const ItemDepartmentLoading = styled.p`
   width: 80px;
   height: 12px;
-  margin-top: 6px;
   background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
   border-radius: 50px;
+  margin-top: 6px;
 `
+
 // ErrorPeople
 
 export const ErrorPeopleDiv = styled.div`

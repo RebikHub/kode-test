@@ -1,35 +1,41 @@
-import React, { ReactElement, useEffect, useState } from 'react'
-import { HeaderDiv, HeaderTitle, Offline } from '../styles/styles'
-import InputSearch from './InputSearch'
-import TopAppBar from './TopAppBar'
+import React, { ReactElement, useEffect, useState } from 'react';
+import { useAppSelector } from '../store/hooks';
+import { HeaderDiv, HeaderTitle, Notice } from '../styles/styles';
+import InputSearch from './InputSearch';
+import TopAppBar from './TopAppBar';
 
 export default function Header(): ReactElement {
-  const [net, setNet] = useState<boolean>(true)
+  const [net, setNet] = useState<boolean>(true);
+  const { loading } = useAppSelector((state) => state.sliceGetUsers);
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (navigator.onLine) {
-        setNet(true)
+        setNet(true);
       } else {
-        setNet(false)
-      }
-    }, 2 * 1000)
+        setNet(false);
+      };
+    }, 2 * 1000);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
     <HeaderDiv>
-      {net ?
+      {net ? loading ?
+        <Notice load={loading}>
+          <HeaderTitle net={!net}>Поиск</HeaderTitle>
+          <p>Секундочку, гружусь...</p>
+        </Notice> :
         <>
           <HeaderTitle net={net}>Поиск</HeaderTitle>
           <InputSearch/>
         </> :
-        <Offline>
+        <Notice load={loading}>
           <HeaderTitle net={net}>Поиск</HeaderTitle>
           <p>Не могу обновить данные. Проверь соединение с интернетом.</p>
-        </Offline>}
+        </Notice>}
       <TopAppBar/>
     </HeaderDiv>
-  )
-}
+  );
+};
