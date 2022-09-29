@@ -40,3 +40,47 @@ export function phoneNumber(number: string | undefined): string | null {
 
   return null;
 };
+
+export function convertDate(str: string | undefined): string | null {
+  if (str) {
+    const date = new Date(str);
+    const monthes = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    return `${date.getDate()} ${monthes[date.getMonth()]} ${date.getFullYear()}`;
+  };
+  return null;
+};
+
+export function calcAge(dateBirth: string | undefined): string | null {
+  if (dateBirth) {
+    const date = new Date(dateBirth);
+    const current = new Date();
+    const year = current.getFullYear() - date.getFullYear();
+    const month = current.getMonth() - date.getMonth();
+    const day = current.getDate() - date.getDate();
+    let age = 0;
+  
+    if (month >= 0 && day >= 0) {
+      age = year;
+    } else {
+      age = year - 1;
+    }
+  
+    function changeWord(age: number): string {
+      const words = ['год', 'года', 'лет'];
+      const indexArray = [2, 0, 1, 1, 1, 2];
+      let index = 0;
+  
+      if (age % 100 > 4 && age % 100 < 20) {
+        index = 2;
+      } else if (age % 10 < 5) {
+        index = indexArray[age % 10];
+      } else {
+        index = indexArray[5];
+      }
+      return words[index];
+    };
+  
+    return `${age} ${changeWord(age)}`;
+  };
+  return null;
+}

@@ -11,7 +11,8 @@ export default function InputSearch(): ReactElement {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      dispatch(searchUser(input));
+      const text = input.toLowerCase();
+      dispatch(searchUser(text));
     }, 1000);
     return () => clearTimeout(timer);
   }, [dispatch, input]);

@@ -1,15 +1,17 @@
 import React, { ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../store/hooks';
 import { Details, DetailsBirth, DetailsBody, DetailsHeader, DetailsPhone } from '../styles/styles';
-import { phoneNumber } from '../utils/utils';
+import { calcAge, convertDate, phoneNumber } from '../utils/utils';
 
 export default function Profile(): ReactElement {
   const { user } = useAppSelector((state) => state.sliceDetailsUser);
+  const navigate = useNavigate();
 
   return (
     <Details>
       <DetailsHeader>
-        <span className='DetailsBack'/>
+        <span className='DetailsBack' onClick={() => navigate('/')}/>
         <img src={user?.avatarUrl} alt="" className="DetailsImage" />
         <p className="DetailsName">{user?.firstName} {user?.lastName}<span>{user?.userTag}</span></p>
         <p className="DetailsDepartment">{user?.department}</p>
@@ -18,8 +20,8 @@ export default function Profile(): ReactElement {
       <DetailsBody>
         <DetailsBirth>
           <span/>
-          <p>{user?.birthday}</p>
-          <p>23 year</p>
+          <p>{convertDate(user?.birthday)}</p>
+          <p>{calcAge(user?.birthday)}</p>
         </DetailsBirth>
         <DetailsPhone>
           <span/>
