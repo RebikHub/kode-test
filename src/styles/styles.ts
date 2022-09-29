@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const HeaderDiv = styled.div`
   display: flex;
@@ -195,6 +195,18 @@ export const ListDiv = styled.div`
 
 // ItemPeople
 
+const animationLoad = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6
+  }
+  100% {
+    opacity: 0.3;
+  }
+`
+
 export const ItemListDiv = styled.div`
   display: flex;
   margin-bottom: 24px;
@@ -204,7 +216,6 @@ export const ItemListDiv = styled.div`
 export const ItemImage = styled.div`
   width: 72px;
   height: 72px;
-  background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
   border-radius: 50px;
   margin-right: 16px;
 
@@ -241,16 +252,27 @@ export const ItemDepartment = styled.p`
   color: #55555C;
 `
 
+export const ItemImageLoad = styled.div`
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  animation: ${animationLoad} 600ms infinite ease-in-out alternate;
+  border-radius: 50px;
+  margin-right: 16px;
+`
+
 export const ItemNameLoading = styled.p`
   width: 144px;
   height: 16px;
   background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  animation: ${animationLoad} 600ms infinite ease-in-out alternate;
   border-radius: 50px;
 `
 export const ItemDepartmentLoading = styled.p`
   width: 80px;
   height: 12px;
   background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  animation: ${animationLoad} 600ms infinite ease-in-out alternate;
   border-radius: 50px;
   margin-top: 6px;
 `
@@ -329,5 +351,83 @@ export const LineDiv = styled.div`
     font-size: 15px;
     line-height: 20px;
     color: #C3C3C6;
+  }
+`
+// Details
+
+export const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
+export const DetailsHeader = styled.div`
+  background-color: #F7F7F8;
+  padding-bottom: 32px;
+
+  & > span {
+    display: flex;
+    width: 11px;
+    height: 11px;
+    margin: 28px;
+    background-image: url(${require('../image/back-arrow.png')});
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  & > img {
+    display: flex;
+    width: 104px;
+    height: 104px;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+
+  & > p {
+    text-align: center;
+    margin-top:24px;
+    font-family: 'Inter-bold';
+    font-size: 24px;
+    line-height: 28px;
+    color: #050510;
+  }
+
+  & > p > span {
+    display: inline;
+    vertical-align: middle;
+    margin-left: 5px;
+    font-family: 'Inter-regular';
+    font-size: 17px;
+    line-height: 22px;
+    color: #97979B;
+  }
+
+  & p ~ p {
+    margin-top: 12px;
+    font-family: 'Inter-regular';
+    font-size: 13px;
+    line-height: 16px;
+    color: #55555C;
+  }
+`
+
+
+export const DetailsBody = styled.div``
+
+
+export const DetailsBirth = styled.div`
+
+  & > span {
+
+  }
+`
+
+export const DetailsOld = styled.p``
+
+export const DetailsPhone = styled.div`
+
+  & > span {
+
   }
 `

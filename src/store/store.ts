@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import sliceModalSort from "./sliceModalSort";
 import sliceGetUsers from "./sliceGetUsers";
 import sliceChoiceDep from "./sliceChoiceDep";
+import sliceDetailsUser from "./sliceDetailsUser";
 
 export const store = configureStore({
   reducer: {
     sliceModalSort,
     sliceGetUsers,
-    sliceChoiceDep
+    sliceChoiceDep,
+    sliceDetailsUser
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk)
 })

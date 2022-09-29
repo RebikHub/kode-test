@@ -1,7 +1,9 @@
 import React, { ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IUser } from '../interfaces/interfaces';
-import { useAppSelector } from '../store/hooks';
-import { ItemDepartment, ItemDepartmentLoading, ItemImage, ItemInfo, ItemListDiv, ItemName, ItemNameLoading, LineDiv, SortDay } from '../styles/styles';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { addUser } from '../store/sliceDetailsUser';
+import { ItemDepartment, ItemDepartmentLoading, ItemImage, ItemImageLoad, ItemInfo, ItemListDiv, ItemName, ItemNameLoading, LineDiv, SortDay } from '../styles/styles';
 
 type Props = {
   item: null | IUser
@@ -9,11 +11,18 @@ type Props = {
 
 export default function ItemPeople({item}: Props): ReactElement {
   const { loading, sortingDate } = useAppSelector((state) => state.sliceGetUsers);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  function choiceUser() {
+    dispatch(addUser(item));
+    navigate('/details');
+  }
   
   if (loading) {
     return (
       <ItemListDiv>
-        <ItemImage/>
+        <ItemImageLoad/>
         <ItemInfo>
           <ItemNameLoading/>
           <ItemDepartmentLoading/>
@@ -30,7 +39,7 @@ export default function ItemPeople({item}: Props): ReactElement {
         <p>2022</p>
         <div/>
       </LineDiv> : null}
-      <ItemListDiv>
+      <ItemListDiv onClick={choiceUser}>
         <ItemImage>
           <img src={item?.avatarUrl} alt="" />
         </ItemImage>
