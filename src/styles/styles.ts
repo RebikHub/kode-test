@@ -413,21 +413,61 @@ export const DetailsHeader = styled.div`
 `
 
 
-export const DetailsBody = styled.div``
+export const DetailsBody = styled.div`
+  margin: 0 16px;
+`
 
 
 export const DetailsBirth = styled.div`
+  display: flex;
+  border-bottom: 0.5px solid #F7F7F8;
+  padding: 26px 0;
 
   & > span {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    margin-right: 14px;
+    background-image: url(${require('../image/star.png')});
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
+  & > p {
+    font-family: 'Inter-medium';
+    font-size: 16px;
+    line-height: 20px;
+    color: #050510;
+    margin-right: auto;
+  }
+
+  & > p ~ p {
+    font-family: 'Inter-medium';
+    font-size: 16px;
+    line-height: 20px;
+    color: #97979B;
+    margin-right: 0;
   }
 `
 
-export const DetailsOld = styled.p``
-
 export const DetailsPhone = styled.div`
+  display: flex;
+  padding-top: 26px;
+
+  & > a {
+    font-family: 'Inter-medium';
+    font-size: 16px;
+    line-height: 20px;
+    color: #050510;
+  }
 
   & > span {
-
+    display: flex;
+    width: 22px;
+    height: 22px;
+    margin-right: 13px;
+    background-image: url(${require('../image/phone.png')});
+    background-position: center;
+    background-repeat: no-repeat;
   }
 `

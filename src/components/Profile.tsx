@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useAppSelector } from '../store/hooks';
-import { Details, DetailsBirth, DetailsBody, DetailsHeader, DetailsOld, DetailsPhone } from '../styles/styles';
+import { Details, DetailsBirth, DetailsBody, DetailsHeader, DetailsPhone } from '../styles/styles';
+import { phoneNumber } from '../utils/utils';
 
 export default function Profile(): ReactElement {
   const { user } = useAppSelector((state) => state.sliceDetailsUser);
@@ -17,12 +18,12 @@ export default function Profile(): ReactElement {
       <DetailsBody>
         <DetailsBirth>
           <span/>
-          <p className="DetailsBirthText">{user?.birthday}</p>
-          <DetailsOld></DetailsOld>
+          <p>{user?.birthday}</p>
+          <p>23 year</p>
         </DetailsBirth>
         <DetailsPhone>
           <span/>
-          <a href='tel:'>{user?.phone}</a>
+          <a href='tel:'>{phoneNumber(user?.phone)}</a>
         </DetailsPhone>
       </DetailsBody>
     </Details>

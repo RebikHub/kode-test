@@ -12,3 +12,31 @@ export  function compareSearch(firstName: string, lastName: string, userTag: str
    lastName.toLowerCase().includes(text) ||
    userTag.toLowerCase().includes(text);
 };
+
+export function phoneNumber(number: string | undefined): string | null {
+  if (number) {
+    const numberWithoutSpace = number.replace(/\s/g, "");
+  
+    const joinNum = (splitNum: Array<string>) => {
+      splitNum[1] = splitNum[1] + " (";
+      splitNum[4] = splitNum[4] + ") ";
+      splitNum[7] = splitNum[7] + " ";
+      splitNum[9] = splitNum[9] + " ";
+      return splitNum.join("");
+    };
+    
+    if (numberWithoutSpace.length === 11 && /\d/g.test(numberWithoutSpace) && /^(8|7)/.test(numberWithoutSpace)) {
+      const num = numberWithoutSpace.replace(/^(8|7)/, "+7");
+      return joinNum(num.split(""));
+    };
+  
+    if (numberWithoutSpace.length === 12 && /^\+\d{11}/.test(numberWithoutSpace)) {
+      const num = numberWithoutSpace.replace(/^\+\d/, "+7");  
+      return joinNum(num.split(""));
+    };
+
+    return number;
+  };
+
+  return null;
+};
