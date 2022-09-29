@@ -20,7 +20,7 @@ export default memo(function App(): ReactElement {
           {modal ? <SortList/> : null}
         </>
       }/>
-      <Route path='/details' element={<Profile/>}/>
+      <Route path='/details/:id' element={<Profile/>}/>
     </Routes>
   );
 })

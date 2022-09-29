@@ -24,3 +24,7 @@ export interface IGetUsers extends IStatus {
   searchedList: Array<IUser> | null;
   searching: boolean;
 };
+
+export interface IGetDetails extends IStatus {
+  user: IUser | null;
+};

@@ -16,7 +16,7 @@ export default function ItemPeople({item}: Props): ReactElement {
 
   function choiceUser() {
     dispatch(addUser(item));
-    navigate('/details');
+    navigate(`/details/${item?.id}`);
   }
   
   if (loading) {

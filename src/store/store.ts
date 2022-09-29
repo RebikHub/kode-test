@@ -10,7 +10,7 @@ export const store = configureStore({
     sliceModalSort,
     sliceGetUsers,
     sliceChoiceDep,
-    sliceDetailsUser
+    sliceDetailsUser,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk)
 })

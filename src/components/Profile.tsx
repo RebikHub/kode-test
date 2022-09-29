@@ -1,12 +1,21 @@
-import React, { ReactElement } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../store/hooks';
+import React, { ReactElement, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { getUser } from '../store/sliceDetailsUser';
 import { Details, DetailsBirth, DetailsBody, DetailsHeader, DetailsPhone } from '../styles/styles';
 import { calcAge, convertDate, phoneNumber } from '../utils/utils';
 
 export default function Profile(): ReactElement {
   const { user } = useAppSelector((state) => state.sliceDetailsUser);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const params = useParams();
+
+  useEffect(() => {
+    if (user === null && params.id) {
+      dispatch(getUser(params.id));
+    };
+  }, [dispatch, params.id, user]);
 
   return (
     <Details>
