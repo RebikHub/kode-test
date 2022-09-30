@@ -1,48 +1,49 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { BaseSyntheticEvent, ReactElement, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { swapDepartment } from '../store/sliceChoiceDep';
-import { getUsersList } from '../store/sliceGetUsers';
+import { clearStatus, getUsersList } from '../store/sliceGetUsers';
 import { ItemBar, NavBar, TopBar } from '../styles/styles';
 
 const depArray: string[]  = ['Все', 'Designers', 'Analysts', 'Managers', 'iOS', 'Android'];
 
 export default function TopAppBar(): ReactElement {
   const { department } = useAppSelector((state) => state.sliceChoiceDep);
+  const {sorting, sortingDate, searching, searchedList} = useAppSelector((state) => state.sliceGetUsers);
   const [checkDep, setCheckDep] = useState<string>(department.menu);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(clearStatus());
     switch (checkDep) {
       case 'Все':
-        dispatch(getUsersList('all'));
         dispatch(swapDepartment({name: 'all', menu: 'Все'}))
         break;
       case 'Designers':
-        dispatch(getUsersList('design'));
         dispatch(swapDepartment({name: 'design', menu: 'Designers'}))
         break;
       case 'Analysts':
-        dispatch(getUsersList('analytics'));
         dispatch(swapDepartment({name: 'analytics', menu: 'Analysts'}))
         break;
       case 'Managers':
-        dispatch(getUsersList('management'));
         dispatch(swapDepartment({name: 'management', menu: 'Managers'}))
         break;
       case 'iOS':
-        dispatch(getUsersList('ios'));
         dispatch(swapDepartment({name: 'ios', menu: 'iOS'}))
         break;
       case 'Android':
-        dispatch(getUsersList('android'));
         dispatch(swapDepartment({name: 'android', menu: 'Android'}))
-        break;
-      default:
-        dispatch(getUsersList('all'));
-        dispatch(swapDepartment({name: 'all', menu: 'Все'}))
         break;
     };
   }, [checkDep, dispatch]);
+
+  useEffect(() => {
+    if (!sorting && !sortingDate && !searching) {
+      if (!searchedList) {
+        dispatch(getUsersList(department.name));
+      };
+    };
+  }, [department.name])
 
   return (
     <TopBar>

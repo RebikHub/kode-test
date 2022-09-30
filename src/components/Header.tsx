@@ -27,7 +27,7 @@ export default function Header(): ReactElement {
   }, []);
 
   useEffect(() => {
-    if (net) {
+    if (net && afterLoad) {
       dispatch(getUsersList(department.name));
     };
   }, [navigator.onLine]);

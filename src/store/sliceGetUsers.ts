@@ -82,6 +82,12 @@ export const sliceGetUsers = createSlice({
           state.searching = true;
         }
       };
+    },
+    clearStatus: (state) => {
+      state.searchedList = null;
+      state.sortingDate = false;
+      state.sorting = false;
+      state.searching = false;
     }
   }
 });
@@ -92,7 +98,8 @@ export const {
   getUsersError,
   sortAlphabet,
   sortBirthday,
-  searchUser
+  searchUser,
+  clearStatus
 } = sliceGetUsers.actions;
 
 export const getUsersList = (department: string) => {
