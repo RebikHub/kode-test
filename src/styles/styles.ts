@@ -173,6 +173,10 @@ export const SortCheck = styled.span<{check: boolean}>`
   border: ${(props) => props.check ? '7px' : '3px'} solid #6534FF;
   border-radius: 50%;
   cursor: pointer;
+
+  &:hover {
+    border: 7px solid #6534FF;
+  }
 `
 
 export const SortText = styled.p`

@@ -10,11 +10,12 @@ export default function InputSearch(): ReactElement {
   const [input, setInput] = useState<string>('');
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const text = input.toLowerCase();
-      dispatch(searchUser(text));
-    }, 1000);
-    return () => clearTimeout(timer);
+    if (input !== '') {
+      setTimeout(() => {
+        const text = input.toLowerCase();
+        dispatch(searchUser(text));
+      }, 1000);
+    }
   }, [dispatch, input]);
 
   return (

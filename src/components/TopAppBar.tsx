@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { BaseSyntheticEvent, ReactElement, useEffect, useState } from 'react';
+import React, { BaseSyntheticEvent, ReactElement, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { swapDepartment } from '../store/sliceChoiceDep';
 import { clearStatus, getUsersList } from '../store/sliceGetUsers';
@@ -9,13 +9,12 @@ const depArray: string[]  = ['Все', 'Designers', 'Analysts', 'Managers', 'iOS
 
 export default function TopAppBar(): ReactElement {
   const { department } = useAppSelector((state) => state.sliceChoiceDep);
-  const {sorting, sortingDate, searching, searchedList} = useAppSelector((state) => state.sliceGetUsers);
-  const [checkDep, setCheckDep] = useState<string>(department.menu);
+  const {sorting, sortingDate, searching, searchedList, list} = useAppSelector((state) => state.sliceGetUsers);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
+  function changeDep(ev: BaseSyntheticEvent) {
     dispatch(clearStatus());
-    switch (checkDep) {
+    switch (ev.target.firstChild.textContent) {
       case 'Все':
         dispatch(swapDepartment({name: 'all', menu: 'Все'}))
         break;
@@ -35,13 +34,13 @@ export default function TopAppBar(): ReactElement {
         dispatch(swapDepartment({name: 'android', menu: 'Android'}))
         break;
     };
-  }, [checkDep, dispatch]);
+  }
 
   useEffect(() => {
-    if (!sorting && !sortingDate && !searching) {
-      if (!searchedList) {
-        dispatch(getUsersList(department.name));
-      };
+    console.log('sorting: ', sorting, 'sortingDate: ', sortingDate, 'searching: ', searching, 'searchingList: ', searchedList);
+    
+    if (!sorting && !sortingDate && !searchedList && !list) {
+      dispatch(getUsersList(department.name));
     };
   }, [department.name])
 
@@ -50,7 +49,7 @@ export default function TopAppBar(): ReactElement {
       <NavBar>
         {depArray.map((e: string, i: number) => (
         <ItemBar 
-          onClick={(ev: BaseSyntheticEvent) => setCheckDep(ev.target.firstChild.textContent)}
+          onClick={changeDep}
           click={department.menu === e}
           key={i}>{e}</ItemBar>
           ))}

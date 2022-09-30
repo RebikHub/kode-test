@@ -38,7 +38,17 @@ export const sliceGetUsers = createSlice({
     },
     sortAlphabet: (state) => {
       if (state.list) {
-        const sortArray = state.list.sort((a, b) => {
+        state.list.map((e) => {
+          if (e.yearLine) {
+            e.yearLine = null;
+          };
+
+          if (e.birthdayShort !== '') {
+            e.birthdayShort = '';
+          };
+          return e;
+        });
+        state.list.sort((a, b) => {
           if ( a.firstName < b.firstName ){
             return -1;
           };
@@ -47,21 +57,19 @@ export const sliceGetUsers = createSlice({
           };
           return 0;
         });
-        state.list = [...sortArray];
         state.sorting = true;
       };
     },
     sortBirthday: (state) => {
       if (state.list) {
         state.list.map((e) => e.birthdayShort = new Date(e.birthday).toLocaleDateString('ru', { month: 'short', day: 'numeric' }).replace(/\.$/, ''));
-        const sortArray = state.list.sort((a, b) => compareDate(b.birthday)- compareDate(a.birthday));
-        sortArray.find((e) => {
+        state.list.sort((a, b) => compareDate(b.birthday)- compareDate(a.birthday));
+        state.list.find((e) => {
           if (e.birthdayShort.includes('ян')) {
             return e.yearLine = true;
           };
           return e;
         })
-        state.list = [...sortArray];
         state.sorting = true;
         state.sortingDate = true;
       };
@@ -76,14 +84,14 @@ export const sliceGetUsers = createSlice({
       };
       
       if (state.list) {
-        const searchArray = [...state.list]
-        state.searchedList = searchArray.filter((e) => compareSearch(e.firstName, e.lastName, e.userTag, actions.payload));
+        state.searchedList = state.list.filter((e) => compareSearch(e.firstName, e.lastName, e.userTag, actions.payload));
         if (state.searchedList.length === 0) {
           state.searching = true;
         }
       };
     },
     clearStatus: (state) => {
+      state.list = null;
       state.searchedList = null;
       state.sortingDate = false;
       state.sorting = false;

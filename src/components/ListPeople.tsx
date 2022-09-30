@@ -12,13 +12,17 @@ export default function ListPeople(): ReactElement {
   const [listItems, setListItems] = useState<List>([]);
 
   useEffect(() => {
-    if (list && !searchedList) {
+    if (list) {
+      console.log('rendeer list ', list);
+      
       setListItems(list);
     };
-  }, [list, searchedList]);
+  }, [list]);
 
   useEffect(() => {
     if (searchedList) {
+      console.log('render searchedlist ', searchedList);
+      
       setListItems(searchedList);
     };
   }, [searchedList]);
