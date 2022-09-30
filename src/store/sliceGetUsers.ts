@@ -7,10 +7,10 @@ import { AppDispatch } from "./store";
 const initialState: IGetUsers = {
   loading: false,
   error: null,
-  list: [],
+  list: null,
   sorting: false,
   sortingDate: false,
-  searchedList: [],
+  searchedList: null,
   searching: false,
 };
 
@@ -100,7 +100,6 @@ export const getUsersList = (department: string) => {
     dispatch(getUsersRequest());
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}?__example=${department}`);
-      console.log(response);
       dispatch(getUsersSuccess(response.data.items));
     } catch (e: any) {
       dispatch(getUsersError(e.message));

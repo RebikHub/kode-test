@@ -17,7 +17,7 @@ export default function ItemPeople({item}: Props): ReactElement {
   function choiceUser() {
     dispatch(addUser(item));
     navigate(`/details/${item?.id}`);
-  }
+  };
   
   if (loading) {
     return (
@@ -28,8 +28,8 @@ export default function ItemPeople({item}: Props): ReactElement {
           <ItemDepartmentLoading/>
         </ItemInfo>
       </ItemListDiv> 
-    )
-  }
+    );
+  };
   
   return (
     <>
@@ -50,5 +50,5 @@ export default function ItemPeople({item}: Props): ReactElement {
         {sortingDate ? <SortDay>{item?.birthdayShort}</SortDay> : null}
       </ItemListDiv>
     </>
-  )
-}
+  );
+};

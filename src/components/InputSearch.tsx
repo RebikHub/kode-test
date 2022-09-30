@@ -1,8 +1,8 @@
-import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react'
+import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { searchUser } from '../store/sliceGetUsers';
 import { clickToSort } from '../store/sliceModalSort';
-import { Input, InputDiv, SearchDiv, SortDiv } from '../styles/styles'
+import { Input, InputDiv, SearchDiv, SortDiv } from '../styles/styles';
 
 export default function InputSearch(): ReactElement {
   const dispatch = useAppDispatch();
@@ -36,5 +36,5 @@ export default function InputSearch(): ReactElement {
         </svg>
       </SortDiv>
     </InputDiv>
-  )
-}
+  );
+};

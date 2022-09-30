@@ -365,7 +365,7 @@ export const DetailsHeader = styled.div`
   background-color: #F7F7F8;
   padding-bottom: 32px;
 
-  & > span {
+  & > a {
     display: flex;
     width: 11px;
     height: 11px;

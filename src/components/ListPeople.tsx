@@ -15,12 +15,16 @@ export default function ListPeople(): ReactElement {
     if (list) {
       setListItems(list);
     };
+    console.log('list');
+    
   }, [list]);
 
   useEffect(() => {
     if (searchedList) {
       setListItems(searchedList);
     };
+    console.log('searchList');
+    
   }, [searchedList]);
 
   if (error) {
@@ -34,7 +38,7 @@ export default function ListPeople(): ReactElement {
         <ErrorPeopleTitle>Мы никого не нашли</ErrorPeopleTitle>
         <ErrorPeopleText>Попробуй скорректировать запрос</ErrorPeopleText>
       </ErrorPeopleDiv>
-    )
+    );
   };
 
   return (
@@ -42,5 +46,5 @@ export default function ListPeople(): ReactElement {
       {list ? listItems.map((e) => <ItemPeople item={e} key={e.id + e.phone}/>) :
         [1,2,3,4,5,6].map((e) => <ItemPeople item={null} key={e} />)}
     </ListDiv>
-  )
+  );
 };

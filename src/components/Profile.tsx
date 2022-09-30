@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { getUser } from '../store/sliceDetailsUser';
 import { Details, DetailsBirth, DetailsBody, DetailsHeader, DetailsPhone } from '../styles/styles';
@@ -8,7 +8,6 @@ import { calcAge, convertDate, phoneNumber } from '../utils/utils';
 export default function Profile(): ReactElement {
   const { user } = useAppSelector((state) => state.sliceDetailsUser);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const params = useParams();
 
   useEffect(() => {
@@ -20,10 +19,10 @@ export default function Profile(): ReactElement {
   return (
     <Details>
       <DetailsHeader>
-        <span className='DetailsBack' onClick={() => navigate('/')}/>
-        <img src={user?.avatarUrl} alt="" className="DetailsImage" />
-        <p className="DetailsName">{user?.firstName} {user?.lastName}<span>{user?.userTag}</span></p>
-        <p className="DetailsDepartment">{user?.department}</p>
+        <Link to={'/'}/>
+        <img src={user?.avatarUrl} alt=""/>
+        <p>{user?.firstName} {user?.lastName}<span>{user?.userTag}</span></p>
+        <p>{user?.department}</p>
       </DetailsHeader>
 
       <DetailsBody>
@@ -38,5 +37,5 @@ export default function Profile(): ReactElement {
         </DetailsPhone>
       </DetailsBody>
     </Details>
-  )
-}
+  );
+};

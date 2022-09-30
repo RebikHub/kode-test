@@ -23,4 +23,4 @@ export default memo(function App(): ReactElement {
       <Route path='/details/:id' element={<Profile/>}/>
     </Routes>
   );
-})
+});

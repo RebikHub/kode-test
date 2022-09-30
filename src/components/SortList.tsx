@@ -57,5 +57,5 @@ export default function SortList(): ReactElement {
         </SortBody>
       </Sort>
     </Modal>
-  )
-}
+  );
+};
