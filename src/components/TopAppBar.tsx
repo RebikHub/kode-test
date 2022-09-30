@@ -9,7 +9,7 @@ const depArray: string[]  = ['Все', 'Designers', 'Analysts', 'Managers', 'iOS
 
 export default function TopAppBar(): ReactElement {
   const { department } = useAppSelector((state) => state.sliceChoiceDep);
-  const {sorting, sortingDate, searching, searchedList, list} = useAppSelector((state) => state.sliceGetUsers);
+  const {sorting, sortingDate, searchedList, list} = useAppSelector((state) => state.sliceGetUsers);
   const dispatch = useAppDispatch();
 
   function changeDep(ev: BaseSyntheticEvent) {
@@ -36,9 +36,7 @@ export default function TopAppBar(): ReactElement {
     };
   }
 
-  useEffect(() => {
-    console.log('sorting: ', sorting, 'sortingDate: ', sortingDate, 'searching: ', searching, 'searchingList: ', searchedList);
-    
+  useEffect(() => {    
     if (!sorting && !sortingDate && !searchedList && !list) {
       dispatch(getUsersList(department.name));
     };
