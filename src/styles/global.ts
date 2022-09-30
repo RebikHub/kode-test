@@ -8,6 +8,7 @@ export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    font-family: 'Inter-medium';
   }
 
   @media (max-width: 480px) {

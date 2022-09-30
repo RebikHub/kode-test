@@ -15,16 +15,12 @@ export default function ListPeople(): ReactElement {
     if (list) {
       setListItems(list);
     };
-    console.log('list');
-    
   }, [list]);
 
   useEffect(() => {
     if (searchedList) {
       setListItems(searchedList);
     };
-    console.log('searchList');
-    
   }, [searchedList]);
 
   if (error) {
