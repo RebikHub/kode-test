@@ -162,6 +162,7 @@ export const SortBody = styled.div`
 export const SortAlphabet = styled.div`
   display: flex;
   margin-bottom: 40px;
+  cursor: pointer;
 `
 
 export const SortCheck = styled.span<{check: boolean}>`
@@ -189,6 +190,7 @@ export const SortText = styled.p`
 
 export const SortBirthday = styled.div`
   display: flex;
+  cursor: pointer;
 `
 
 // ListPeople

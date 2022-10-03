@@ -42,16 +42,12 @@ export default function SortList(): ReactElement {
           <SortClose onClick={() => dispatch(closeSort())}/>
         </SortHeader>
         <SortBody>
-          <SortAlphabet>
-            <SortCheck
-              check={check.alphabet}
-              onClick={sortToAlphabet}/>
+          <SortAlphabet onClick={sortToAlphabet}>
+            <SortCheck check={check.alphabet}/>
             <SortText>По алфавиту</SortText>
           </SortAlphabet>
-          <SortBirthday>
-          <SortCheck
-              check={check.birthday}
-              onClick={sortToBirthday}/>
+          <SortBirthday onClick={sortToBirthday}>
+          <SortCheck check={check.birthday}/>
             <SortText>По дню рождения</SortText>
           </SortBirthday>
         </SortBody>
