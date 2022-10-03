@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { getUsersList } from '../store/sliceGetUsers';
+import { getUsersList } from '../store/thunk';
 import { HeaderDiv, HeaderTitle, Notice } from '../styles/styles';
 import InputSearch from './InputSearch';
 import TopAppBar from './TopAppBar';
@@ -9,7 +9,7 @@ import TopAppBar from './TopAppBar';
 export default function Header(): ReactElement {
   const [net, setNet] = useState<boolean>(true);
   const [afterLoad, setAfterLoad] = useState<boolean>(false);
-  const { loading } = useAppSelector((state) => state.sliceGetUsers);
+  const { loading } = useAppSelector((state) => state.sliceCacheList);
   const { department } = useAppSelector((state) => state.sliceChoiceDep);
   const dispatch = useAppDispatch();
 

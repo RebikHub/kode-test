@@ -1,12 +1,12 @@
 import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { searchUser } from '../store/sliceGetUsers';
+import { searchUser } from '../store/sliceUsersList';
 import { clickToSort } from '../store/sliceModalSort';
 import { Input, InputDiv, SearchDiv, SortDiv } from '../styles/styles';
 
 export default function InputSearch(): ReactElement {
   const dispatch = useAppDispatch();
-  const { sorting } = useAppSelector((state) => state.sliceGetUsers);
+  const { sorting } = useAppSelector((state) => state.sliceUsersList);
   const [input, setInput] = useState<string>('');
 
   useEffect(() => {

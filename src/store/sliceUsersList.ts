@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
 import { IGetUsers, IUser } from "../interfaces/interfaces";
 import { compareDate, compareSearch } from "../utils/utils";
-import { AppDispatch } from "./store";
 
 const initialState: IGetUsers = {
   loading: false,
@@ -14,27 +12,15 @@ const initialState: IGetUsers = {
   searching: false,
 };
 
-export const sliceGetUsers = createSlice({
-  name: 'sliceGetUsers',
+
+export const sliceUsersList = createSlice({
+  name: 'sliceUsersList',
   initialState,
   reducers: {
-    getUsersRequest: (state) => {
-      state.loading = true;
-      state.error = null;
-      state.list = null;
-      state.searchedList = null;
-      state.sortingDate = false;
-      state.sorting = false;
-      state.searching = false;
-    },
-    getUsersSuccess: (state, actions: PayloadAction<IUser[]>) => {
-      state.loading = false;
-      state.error = null;
-      state.list = actions.payload;
-    },
-    getUsersError: (state, actions: PayloadAction<string>) => {
-      state.loading = false;
-      state.error = actions.payload;
+    updateList: (state, actions: PayloadAction<IUser[] | null>) => {
+      if (actions.payload) {
+        state.list = [...actions.payload];
+      };
     },
     sortAlphabet: (state) => {
       if (state.list) {
@@ -101,25 +87,11 @@ export const sliceGetUsers = createSlice({
 });
 
 export const {
-  getUsersRequest,
-  getUsersSuccess,
-  getUsersError,
+  updateList,
   sortAlphabet,
   sortBirthday,
   searchUser,
   clearStatus
-} = sliceGetUsers.actions;
+} = sliceUsersList.actions;
 
-export const getUsersList = (department: string) => {
-  return async (dispatch: AppDispatch) => {
-    dispatch(getUsersRequest());
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}?__example=${department}`);
-      dispatch(getUsersSuccess(response.data.items));
-    } catch (e: any) {
-      dispatch(getUsersError(e.message));
-    };
-  };
-};
-
-export default sliceGetUsers.reducer;
+export default sliceUsersList.reducer;

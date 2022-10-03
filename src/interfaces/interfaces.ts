@@ -28,3 +28,21 @@ export interface IGetUsers extends IStatus {
 export interface IGetDetails extends IStatus {
   user: IUser | null;
 };
+
+export interface IGetDepUsers extends IStatus{
+  list: {
+    all: IDepList;
+    design: IDepList;
+    analytics: IDepList;
+    management: IDepList;
+    ios: IDepList;
+    android: IDepList;
+  }
+};
+
+export interface IDepList {
+  depList: Array<IUser> | null;
+  timer: boolean;
+};
+
+export type departments = 'all' | 'design' | 'analytics' | 'management' | 'ios' | 'android';

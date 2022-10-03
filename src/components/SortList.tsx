@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import { useAppDispatch } from '../store/hooks';
-import { sortAlphabet, sortBirthday } from '../store/sliceGetUsers';
+import { sortAlphabet, sortBirthday } from '../store/sliceUsersList';
 import { closeSort } from '../store/sliceModalSort';
 import { Modal, Sort, SortAlphabet, SortBirthday, SortBody, SortCheck, SortClose, SortHeader, SortText, SortTitle } from '../styles/styles';
 

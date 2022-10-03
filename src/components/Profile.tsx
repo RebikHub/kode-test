@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { getUser } from '../store/sliceDetailsUser';
+import { getUser } from '../store/thunk';
 import { Details, DetailsBirth, DetailsBody, DetailsHeader, DetailsPhone } from '../styles/styles';
 import { calcAge, convertDate, phoneNumber } from '../utils/utils';
 

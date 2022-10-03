@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { getUsersList } from '../store/sliceGetUsers';
+import { getUsersList } from '../store/thunk';
 import { ErrorPeopleDiv, ErrorPeopleImage, ErrorPeopleText, ErrorPeopleTitle, ErrorPeopleTry } from '../styles/styles';
 
 export default function ErrorPeople(): ReactElement {

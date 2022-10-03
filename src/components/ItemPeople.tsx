@@ -10,7 +10,8 @@ type Props = {
 };
 
 export default function ItemPeople({item}: Props): ReactElement {
-  const { loading, sortingDate } = useAppSelector((state) => state.sliceGetUsers);
+  const { sortingDate } = useAppSelector((state) => state.sliceUsersList);
+  const { loading } = useAppSelector((state) => state.sliceCacheList);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ export default function ItemPeople({item}: Props): ReactElement {
     dispatch(addUser(item));
     navigate(`/details/${item?.id}`);
   };
-  
+
   if (loading) {
     return (
       <ItemListDiv>
