@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { BaseSyntheticEvent, ReactElement, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { swapDepartment } from '../store/sliceChoiceDep';
@@ -46,7 +45,7 @@ export default function TopAppBar(): ReactElement {
         dispatch(updateList(depLists[department.name].depList));
       };
     };
-  }, [department.name])
+  }, [depLists, department.name, dispatch, list, searchedList, sorting])
 
   return (
     <TopBar>

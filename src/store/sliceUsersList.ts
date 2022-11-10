@@ -50,12 +50,10 @@ export const sliceUsersList = createSlice({
       if (state.list) {
         state.list.map((e) => e.birthdayShort = new Date(e.birthday).toLocaleDateString('ru', { month: 'short', day: 'numeric' }).replace(/\.$/, ''));
         state.list.sort((a, b) => compareDate(b.birthday)- compareDate(a.birthday));
-        state.list.find((e) => {
-          if (e.birthdayShort.includes('ян')) {
-            return e.yearLine = true;
-          };
-          return e;
-        })
+        const index = state.list.findIndex((e) => e.birthdayShort.includes('ян'));
+        if (index !== -1) {
+          state.list[index].yearLine = true;
+        };
         state.sorting = true;
         state.sortingDate = true;
       };

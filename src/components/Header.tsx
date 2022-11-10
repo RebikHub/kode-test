@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { getUsersList } from '../store/thunk';
@@ -30,13 +29,13 @@ export default function Header(): ReactElement {
     if (net && afterLoad) {
       dispatch(getUsersList(department.name));
     };
-  }, [navigator.onLine]);
+  }, [afterLoad, department.name, dispatch, net]);
 
   useEffect(() => {
     if (afterLoad && !loading) {
       setAfterLoad(false);
     }
-  }, [loading]);
+  }, [afterLoad, loading]);
 
   return (
     <HeaderDiv>
